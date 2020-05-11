@@ -11,3 +11,8 @@ spring:
     store-type: none
   thymeleaf:
     cache: false
+nlx:
+  security:
+    browser:
+      loginPage: /nlx-login.html
+      loginType: REDIRECT
