@@ -1,0 +1,4 @@
+{
+  "equalToJson": "{ \"name\": \"new product\", \"creator\": \"tester\", \"createTime\": \"2015-09-07\" }",
+  "jsonCompareMode": "LENIENT"
+}
