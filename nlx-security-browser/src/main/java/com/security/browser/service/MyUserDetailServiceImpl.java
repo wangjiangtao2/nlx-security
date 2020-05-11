@@ -17,7 +17,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -35,10 +34,6 @@ public class MyUserDetailServiceImpl implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public static void main(String[] args) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        System.out.println( passwordEncoder.encode("123456"));
-    }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("登录用户名 [{}]", username);
@@ -47,7 +42,7 @@ public class MyUserDetailServiceImpl implements UserDetailsService {
         String password = passwordEncoder.encode("123456");
         log.info("密码 [{}]", password);
         //以后这里passwordEncoder.encode("123456")操作 是注册时候加密密码保存到数据库，这里直接从数据库读取密码就行了，不用再次加密
-        User user = new User(username, passwordEncoder.encode("123456"),
+        User user = new User(username, password,
                 true, true, true, true,
                 AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
 
@@ -82,3 +77,4 @@ public class MyUserDetailServiceImpl implements UserDetailsService {
         */
     }
 }
+

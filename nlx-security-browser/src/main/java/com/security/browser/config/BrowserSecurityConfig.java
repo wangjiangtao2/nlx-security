@@ -10,6 +10,10 @@
  */
 package com.security.browser.config;
 
+import com.security.browser.authentication.MyAuthenticationFailedHandler;
+import com.security.browser.authentication.MyAuthenticationSuccessHandler;
+import com.security.core.properties.SecurityProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -29,6 +33,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private SecurityProperties securityProperties;
+
+    @Autowired
+    private MyAuthenticationSuccessHandler authenticationSuccessHandler;
+    @Autowired
+    private MyAuthenticationFailedHandler authenticationFailedHandler;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -43,16 +55,23 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        //用表单登录来进行身份认证
+        // http.httpBasic()
+        http.formLogin()
+                .loginPage("/authentication/require")
+                .loginProcessingUrl("/authentication/form")
+                .successHandler(authenticationSuccessHandler)
+                .failureHandler(authenticationFailedHandler)
+                .and()
+                //对授权的配置
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/user/**").hasRole("USER")
+                //当访问/nlx-login.html不需要认证，就可以访问
+                .antMatchers("/authentication/require",
+                        securityProperties.getBrowser().getLoginPage()).permitAll()
+                //其他任何请求都需要身份认证
+                .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/user")
-                .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/login");
+                .csrf().disable();
     }
-
-
 }
 
