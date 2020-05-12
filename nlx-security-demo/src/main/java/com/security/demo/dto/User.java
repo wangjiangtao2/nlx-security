@@ -27,9 +27,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class User {
 
-    public interface UserSimpleView{}
+    public interface UserSimpleView{};
 
-    public interface UserDetailView extends UserSimpleView{}
+    public interface UserDetailView extends UserSimpleView{};
 
     @JsonView({UserSimpleView.class})
     private String username;

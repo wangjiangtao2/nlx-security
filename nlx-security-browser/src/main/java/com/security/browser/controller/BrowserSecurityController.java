@@ -10,7 +10,7 @@
  */
 package com.security.browser.controller;
 
-import com.security.browser.support.SimpleResponse;
+import com.security.browser.support.ResultBody;
 import com.security.core.properties.SecurityProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -47,13 +47,14 @@ public class BrowserSecurityController {
     @Autowired(required = false)
     private SecurityProperties securityProperties;
 
+
     /**
      * 当需要身份认证时，跳转到这里
      */
     @RequestMapping("/authentication/require")
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
-    public SimpleResponse requireAuthentication(HttpServletRequest request,
-                                                HttpServletResponse response) throws IOException {
+    public ResultBody requireAuthentication1(HttpServletRequest request,
+                                            HttpServletResponse response) throws IOException {
         SavedRequest savedRequest = requestCache.getRequest(request, response);
         if (savedRequest != null) {
             String targetUrl = savedRequest.getRedirectUrl();
@@ -63,6 +64,7 @@ public class BrowserSecurityController {
                 redirectStrategy.sendRedirect(request, response, securityProperties.getBrowser().getLoginPage());
             }
         }
-        return new SimpleResponse("访问的服务需要身份验证，请引导用户到登录页");
+        return new ResultBody("401", "访问的服务需要身份验证，请引导用户到登录页", securityProperties.getBrowser().getLoginPage());
+//        return new SimpleResponse("访问的服务需要身份验证，请引导用户到登录页," + securityProperties.getBrowser().getLoginPage());
     }
 }

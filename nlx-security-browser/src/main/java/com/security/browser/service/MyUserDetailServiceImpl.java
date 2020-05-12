@@ -58,17 +58,21 @@ public class MyUserDetailServiceImpl implements UserDetailsService {
              if(user == null ){
                 throw  new UsernameNotFoundException("the user is not found");
              }
-             // 从数据库中 查询用户角色编码
-            String role = "ROLE_ADMIN";
-            List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority(role));
+             //根据用户id获取用户角色
+             List<String> roles = roleMapper.getUserRoleByUserId(user.getUserId());
+             // 填充权限
+             Collection<SimpleGrantedAuthority> authorities = new HashSet<SimpleGrantedAuthority>();
+             for (Role role : roles) {
+                authorities.add(new SimpleGrantedAuthority(role));
+             }
+             //填充权限菜单
+             List<Menu> menus=menuMapper.getRoleMenuByRoles(roles);
+             redisTemplate.put("username", user);
+             return new UserEntity(username, user.getPassword(), authorities,menus);
 
-            // 线上环境应该通过用户名查询数据库获取加密后的密码
-            String password = passwordEncoder.encode("123456");
-            redisTemplate.put("key", user);
             return new org.springframework.security.core.userdetails.User(username,password, authorities);
          }
-         //以后这里先通过数据库获取，保存到redis中
+         //内存用户
         return User.withUsername(username)
                 .password(passwordEncoder.encode("123456"))
                 //权限
