@@ -23,5 +23,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 @ConfigurationProperties(prefix = "nlx.security")
 public class SecurityProperties {
-    private BrowserProperties browser;
+    private BrowserProperties browser = new BrowserProperties();
+
+    private ValidateCodeProperties code = new ValidateCodeProperties();
 }
