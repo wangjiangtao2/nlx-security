@@ -35,7 +35,12 @@ public interface SecurityConstants {
     String DEFAULT_UNAUTHENTICATION_URL = "/authentication/require";
 
     /**
-     * 验证码session key
+     * 图片验证码session key
      */
     String DEFAULT_SESSION_IMAGE_CODE_KEY = "SESSION_KEY_IMAGE_CODE";
+
+    /**
+     * 短信验证码session key
+     */
+    String DEFAULT_SESSION_SMS_CODE_KEY = "SESSION_KEY_SMS_CODE";
 }
