@@ -33,6 +33,7 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
 
+
     @GetMapping("/{id}")
     public User userInfo(@PathVariable String id) {
         log.info("id [{}]", id);

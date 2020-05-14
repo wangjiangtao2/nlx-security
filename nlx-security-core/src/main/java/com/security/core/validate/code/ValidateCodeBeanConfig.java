@@ -11,7 +11,7 @@
 package com.security.core.validate.code;
 
 import com.security.core.properties.SecurityProperties;
-import com.security.core.validate.code.image.ImageCodeGenerator;
+import com.security.core.validate.code.image.ImageValidateCodeGenerator;
 import com.security.core.validate.code.sms.DefaultSmsCodeSender;
 import com.security.core.validate.code.sms.SmsCodeSender;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +33,10 @@ public class ValidateCodeBeanConfig {
      * 如果系统中有图片验证码生成器，就不会再次生成
      */
     @Bean
-    @ConditionalOnMissingBean(ImageCodeGenerator.class)
-    public ValidateCodeGenerator imageCodeGenerator() {
-        ImageCodeGenerator imageCodeGenerator = new ImageCodeGenerator();
+    @ConditionalOnMissingBean(ImageValidateCodeGenerator.class)
+    public ValidateCodeGenerator imageValidateCodeGenerator() {
+        ImageValidateCodeGenerator imageCodeGenerator = new ImageValidateCodeGenerator();
         imageCodeGenerator.setSecurityProperties(securityProperties);
-
         return imageCodeGenerator;
     }
 

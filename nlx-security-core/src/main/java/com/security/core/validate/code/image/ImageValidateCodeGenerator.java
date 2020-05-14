@@ -23,10 +23,9 @@ import java.util.Random;
 
 /**
  * 图片验证码生成器
- * @author Administrator
  */
 @Data
-public class ImageCodeGenerator implements ValidateCodeGenerator {
+public class ImageValidateCodeGenerator implements ValidateCodeGenerator {
 
     private SecurityProperties securityProperties;
 
