@@ -10,6 +10,7 @@
  */
 package com.security.browser.config;
 
+import com.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.security.core.constants.SecurityConstants;
 import com.security.core.properties.SecurityProperties;
 import com.security.core.validate.code.ValidateCodeFilter;
@@ -90,8 +91,12 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 //其他任何请求都需要身份认证
                 .anyRequest().authenticated()
                 .and()
-                .csrf().disable();
+                .csrf().disable()
+        .apply(smsCodeAuthenticationSecurityConfig);
     }
+
+    @Autowired
+    private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
 
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {

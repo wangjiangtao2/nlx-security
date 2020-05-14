@@ -10,7 +10,7 @@
  */
 package com.security.core.properties;
 
-import com.security.core.validate.code.properties.ValidateCodeProperties;
+import com.security.core.validate.code.ValidateCodeProperties;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

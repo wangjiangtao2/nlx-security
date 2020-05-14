@@ -12,7 +12,6 @@ package com.security.core.validate.code.processor;
 
 import com.security.core.constants.SecurityConstants;
 import com.security.core.validate.code.ValidateCode;
-import com.security.core.validate.code.ValidateCodeGenerator;
 import com.security.core.validate.code.ValidateCodeType;
 import com.security.core.validate.code.exception.ValidateCodeException;
 import org.apache.commons.lang3.StringUtils;

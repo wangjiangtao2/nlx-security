@@ -11,8 +11,7 @@
 package com.security.core.validate.code.image;
 
 import com.security.core.properties.SecurityProperties;
-import com.security.core.validate.code.ImageCode;
-import com.security.core.validate.code.ValidateCodeGenerator;
+import com.security.core.validate.code.processor.ValidateCodeGenerator;
 import lombok.Data;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;

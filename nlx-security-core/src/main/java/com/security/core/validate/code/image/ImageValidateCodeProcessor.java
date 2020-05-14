@@ -8,9 +8,10 @@
  * 修改单号：
  * 修改内容：
  */
-package com.security.core.validate.code.processor;
+package com.security.core.validate.code.image;
 
-import com.security.core.validate.code.ImageCode;
+import com.security.core.validate.code.image.ImageCode;
+import com.security.core.validate.code.processor.AbstractValidateCodeProcessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 

@@ -12,7 +12,7 @@ package com.security.core.validate.code.sms;
 
 import com.security.core.properties.SecurityProperties;
 import com.security.core.validate.code.ValidateCode;
-import com.security.core.validate.code.ValidateCodeGenerator;
+import com.security.core.validate.code.processor.ValidateCodeGenerator;
 import lombok.Data;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -43,7 +43,7 @@ public interface SecurityConstants {
 
     /******************************验证码相关 start*************************/
     /**
-     * 发送短信验证码 ，前端传递手机号的参数的名称
+     * 发送短信验证码 或 验证短信验证码时 ，前端传递手机号的参数的名称
      */
      String DEFAULT_PARAMETER_NAME_MOBILE = "mobile";
     /**

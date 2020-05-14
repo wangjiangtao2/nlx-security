@@ -8,8 +8,10 @@
  * 修改单号：
  * 修改内容：
  */
-package com.security.core.validate.code.properties;
+package com.security.core.validate.code;
 
+import com.security.core.validate.code.image.ImageCodeProperties;
+import com.security.core.validate.code.sms.SmsCodeProperties;
 import lombok.Data;
 
 /**

@@ -8,8 +8,9 @@
  * 修改单号：
  * 修改内容：
  */
-package com.security.core.validate.code;
+package com.security.core.validate.code.processor;
 
+import com.security.core.validate.code.ValidateCode;
 import org.springframework.web.context.request.ServletWebRequest;
 
 /**
