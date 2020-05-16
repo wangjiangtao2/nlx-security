@@ -12,6 +12,9 @@
         <module>nlx-security-app</module>
         <module>nlx-security-browser</module>
         <module>nlx-security-demo</module>
+        <module>nlx-sso-server</module>
+        <module>nlx-sso-client01</module>
+        <module>nlx-sso-client02</module>
     </modules>
 
     <packaging>pom</packaging>
