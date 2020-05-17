@@ -12,9 +12,6 @@
         <module>nlx-security-app</module>
         <module>nlx-security-browser</module>
         <module>nlx-security-demo</module>
-        <module>nlx-sso-server</module>
-        <module>nlx-sso-client01</module>
-        <module>nlx-sso-client02</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -48,10 +45,10 @@
             <version>${lombok.version}</version>
             <scope>compile</scope>
         </dependency>
+        <!--配置文件读取-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
