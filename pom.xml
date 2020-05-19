@@ -8,7 +8,9 @@
     <artifactId>nlx-security</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>security-core</module>
+        <module>nlx-security-core</module>
+        <module>nlx-security-app</module>
+        <module>nlx-security-demo</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -1,0 +1,8 @@
+/nlx-security-core/*.iml
+/nlx-security-demo/*.iml
+/nlx-security-app/*.iml
+
+/nlx-security-core/target/**/*.class
+/nlx-security-demo/target/**/*.class
+/nlx-security-app/target/**/*.class
+
