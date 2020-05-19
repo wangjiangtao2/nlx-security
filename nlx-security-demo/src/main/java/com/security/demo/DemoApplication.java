@@ -21,7 +21,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @see DemoApplication
  * @since JDK1.8
  */
-@ComponentScan(basePackages = {"com.security.demo", "com.security.app", "com.security.core"})
+@ComponentScan(basePackages = {"com.security.demo", "com.security.core"})
 @SpringBootApplication
 public class DemoApplication {
 

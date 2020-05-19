@@ -2,7 +2,7 @@
 /nlx-security-demo/*.iml
 /nlx-security-app/*.iml
 
-/nlx-security-core/target/**/*.class
-/nlx-security-demo/target/**/*.class
-/nlx-security-app/target/**/*.class
+/nlx-security-core/target/**
+/nlx-security-demo/target/**
+/nlx-security-app/target/**
 
