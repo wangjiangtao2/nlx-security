@@ -11,8 +11,6 @@
 package com.security.core.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.security.core.enums.LoginAfterTypeEnum;
-import com.security.core.properties.SecurityPropertie;
 import com.security.core.support.ResultBody;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,23 +35,15 @@ public class DefaultAuthenticationFailedHandler extends SimpleUrlAuthenticationF
     @Autowired
     private ObjectMapper objectMapper;
 
-    @Autowired
-    private SecurityPropertie securityPropertie;
-
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         //ServletRequestUtils.getStringParameter(request, "username");
         //ServletRequestUtils.getStringParameter(request, "password");
         Map<String, String[]> parameterMap = request.getParameterMap();
-        log.info("登录失败[{}]", objectMapper.writeValueAsString(parameterMap));
-        if (LoginAfterTypeEnum.JSON.equals(securityPropertie.getApp().getLoginAfterType())) {
-            response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-            response.setContentType("application/json;charset=UTF-8");
-            response.getWriter().write(
-                    objectMapper.writeValueAsString(ResultBody.failed(401, exception.getMessage())));
-        } else {
-            // 如果用户配置为跳转，则跳到Spring Boot默认的错误页面
-            super.onAuthenticationFailure(request, response, exception);
-        }
+        log.warn("登录失败[{}]", objectMapper.writeValueAsString(parameterMap));
+        response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().write(
+                objectMapper.writeValueAsString(ResultBody.failed(401, exception.getMessage())));
     }
 }

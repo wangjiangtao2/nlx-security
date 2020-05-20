@@ -24,5 +24,5 @@ spring:
 nlx:
   security:
     app:
-      #loginPage: /demo-login.html # 这里可以配置成自己的非标准登录界面
-      loginType: JSON #REDIRECT
+      #这里可以配置成自己的准登录界面
+      loginPage: http://localhost:8080/demo-login.html

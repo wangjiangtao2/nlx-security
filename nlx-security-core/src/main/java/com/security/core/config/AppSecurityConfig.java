@@ -31,7 +31,6 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SecurityPropertie securityPropertie;
 
-
     /**
      * 登录成功处理器
      */
@@ -52,9 +51,11 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 //自定义登录请求
                 .loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
-                //自定义表单请求路径
+                //自定义表单登录请求路径
                 .loginProcessingUrl(SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_FORM)
+                //登录成功处理器
                 .successHandler(successHandler)
+                //登录失败处理器
                 .failureHandler(failedHandler)
                 .and()
                 //对授权的配置
@@ -62,6 +63,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 //此路径放行 否则会陷入死循环
                 .antMatchers(SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_FORM,
                         SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
+                        "/demo-login.html",
                         securityPropertie.getApp().getLoginPage()).permitAll()
                 //其他任何请求都需要身份认证
                 .anyRequest()

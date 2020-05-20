@@ -10,7 +10,6 @@
  */
 package com.security.core.properties;
 
-import com.security.core.enums.LoginAfterTypeEnum;
 import lombok.Data;
 
 /**
@@ -22,9 +21,4 @@ public class AppProperties {
      * 登录页面 不配置就使用core项目中的标准登录页面
      */
     private String loginPage = "/nlx-login.html";
-
-    /**
-     * 登录成功或失败后 控制跳转行为; 默认返回json数据
-     */
-    private LoginAfterTypeEnum loginAfterType = LoginAfterTypeEnum.JSON;
 }
