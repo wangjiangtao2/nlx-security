@@ -10,6 +10,7 @@
  */
 package com.security.core.config;
 
+import com.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.security.core.constants.SecurityConstants;
 import com.security.core.handler.DefaultAccessDeniedHandler;
 import com.security.core.handler.DefaultAuthenticationEntryPoint;
@@ -69,6 +70,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private ValidateCodeFilter validateCodeFilter;
 
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //将验证码过滤加在UsernamePasswordAuthenticationFilter过滤器之前
@@ -80,6 +83,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_FORM,
                         SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
+                        SecurityConstants.LOGIN_PROCESSING_URL_MOBILE,
                         "/demo-login.html",
                         "/code/*",
                         securityPropertie.getApp().getLoginPage()).permitAll()
@@ -116,5 +120,24 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().disable();
         //开启模拟请求，比如API POST测试工具的测试，不开启时，API POST为报403错误
         http.csrf().disable();
+
+        http.apply(smsCodeAuthenticationSecurityConfig);
     }
+
+    @Autowired
+    private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

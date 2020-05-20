@@ -13,9 +13,13 @@ package com.security.core.constants;
 public interface SecurityConstants {
     /**
      * 默认的用户名密码登录请求处理url(浏览器表单登录访问地址)
-     * {@link }
      */
     String DEFAULT_LOGIN_PROCESSING_URL_FORM = "/authentication/form";
+
+    /**
+     * 手机号登录请求处理url
+     */
+    String LOGIN_PROCESSING_URL_MOBILE = "/authentication/mobile";
 
     /**
      * 当请求需要身份认证时，默认处理的url

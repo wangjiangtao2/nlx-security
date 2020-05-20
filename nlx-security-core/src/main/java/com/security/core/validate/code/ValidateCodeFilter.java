@@ -16,6 +16,7 @@ package com.security.core.validate.code;
  * OncePerRequestFilter 过滤器只会调用一次
  */
 
+import com.security.core.constants.SecurityConstants;
 import com.security.core.properties.SecurityPropertie;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -84,6 +85,8 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
         Set<String> imageUrls = securityPropertie.getCode().getImage().getUrls();
         //从配置文件中获取需要 拦截短信验证码的的url
         Set<String> smsUrls = securityPropertie.getCode().getSms().getUrls();
+
+        urlMap.put(SecurityConstants.LOGIN_PROCESSING_URL_MOBILE, ValidateCodeType.SMS);
 
         //将系统中配置的需要校验验证码的URL根据校验的类型放入map
         if (!CollectionUtils.isEmpty(imageUrls)) {
