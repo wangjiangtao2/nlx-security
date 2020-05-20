@@ -24,4 +24,9 @@ public class SecurityPropertie {
      * APP端相关配置
      */
     private AppProperties app = new AppProperties();
+
+    /**
+     * 验证码相关配置
+     */
+    private ValidateCodeProperties code = new ValidateCodeProperties();
 }

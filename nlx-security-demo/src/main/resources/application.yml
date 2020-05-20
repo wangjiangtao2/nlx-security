@@ -21,8 +21,16 @@ spring:
           max-idle: 8
           min-idle: 8
 #自定义权限配置
+#nlx:
+#  security:
+#    app:
+#      #这里可以配置成自己的准登录界面
+#      loginPage: http://localhost:8080/demo-login.html
 nlx:
   security:
-    app:
-      #这里可以配置成自己的准登录界面
-      loginPage: http://localhost:8080/demo-login.html
+    code:
+      image:
+        urls:
+          - /user
+          - /user/*
+          - /aaa

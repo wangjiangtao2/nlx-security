@@ -15,9 +15,7 @@ import com.security.core.properties.SecurityPropertie;
 import com.security.core.support.ResultBody;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +37,7 @@ public class LoginRequireController {
      * @return 将信息以JSON形式返回给前端
      */
     @RequestMapping(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
-    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    //@ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public ResultBody requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
         log.info("LoginRequireController: uri = [{}], RemoteAddr = [{}]", request.getRequestURI(), request.getRemoteAddr());
         return ResultBody.failed(401, "访问的服务需要身份认证，请引导用户到登录页面",
