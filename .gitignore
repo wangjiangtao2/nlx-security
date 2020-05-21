@@ -4,4 +4,5 @@
 /nlx-security-app/target/**
 .idea/**
 *.iml
+*/target/**
 

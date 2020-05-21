@@ -11,6 +11,7 @@
         <module>nlx-security-core</module>
         <module>nlx-security-demo</module>
         <module>nlx-security-oauth2</module>
+        <module>nlx-security-authorize</module>
     </modules>
 
     <packaging>pom</packaging>
