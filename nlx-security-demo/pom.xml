@@ -14,8 +14,8 @@
     <description>样例程序</description>
     <dependencies>
         <dependency>
-            <groupId>com.security.core</groupId>
-            <artifactId>nlx-security-core</artifactId>
+            <groupId>com.security.oauth2</groupId>
+            <artifactId>nlx-security-oauth2</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

@@ -10,6 +10,7 @@
     <modules>
         <module>nlx-security-core</module>
         <module>nlx-security-demo</module>
+        <module>nlx-security-oauth2</module>
     </modules>
 
     <packaging>pom</packaging>

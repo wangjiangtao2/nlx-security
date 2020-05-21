@@ -11,7 +11,7 @@
 package com.security.demo.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.security.core.support.ResultBody;
+import com.security.oauth2.support.ResultBody;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
