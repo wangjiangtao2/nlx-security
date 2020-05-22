@@ -32,9 +32,19 @@ public class UserServiceImpl implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * 通过用户名查询用户信息
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return new User(username, passwordEncoder.encode("123456"),
+                AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+    }
+    /**
+     * 通过手机号查询用户信息
+     */
+    public UserDetails loadUserByMobile(String mobile) throws UsernameNotFoundException {
+        return new User(mobile, passwordEncoder.encode("123456"),
                 AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
     }
 }
