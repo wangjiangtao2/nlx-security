@@ -2,3 +2,15 @@ spring:
   security:
     oauth2:
       storeType: jwt
+  application:
+    #redis 配置
+    redis:
+      database: 0
+      host: localhost
+      port: 6379
+      lettuce:
+        pool:
+          max-active: 8
+          max-wait: 10
+          max-idle: 8
+          min-idle: 8

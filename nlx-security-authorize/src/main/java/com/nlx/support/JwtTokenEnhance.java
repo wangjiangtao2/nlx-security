@@ -9,8 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author zhc
- * @date 2019/9/5
+ * 用于扩展JWT
  */
 public class JwtTokenEnhance implements TokenEnhancer {
 
@@ -18,6 +17,7 @@ public class JwtTokenEnhance implements TokenEnhancer {
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
         Map<String, Object> tokenInfo = new HashMap<>(16);
         //扩展返回的token 信息
+        tokenInfo.put("client", authentication.getOAuth2Request().getClientId());
         tokenInfo.put("username", authentication.getName());
         ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(tokenInfo);
         return accessToken;

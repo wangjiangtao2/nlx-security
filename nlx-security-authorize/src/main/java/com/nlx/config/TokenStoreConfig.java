@@ -15,16 +15,37 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
+
 
 @Configuration
 public class TokenStoreConfig {
+
+    /**
+     * redis连接工厂
+     */
+    @Resource
+    private RedisConnectionFactory redisConnectionFactory;
+
+    /**
+     * 使用redisTokenStore存储token
+     *
+     * @return tokenStore
+     */
+    @Bean
+    @ConditionalOnProperty(prefix = "spring.security.oauth2", name = "storeType", havingValue = "redis")
+    public TokenStore redisTokenStore() {
+        return new RedisTokenStore(redisConnectionFactory);
+    }
 
     /**
      * jwt的配置
@@ -59,8 +80,6 @@ public class TokenStoreConfig {
 
         /**
          * 用于扩展JWT
-         *
-         * @return TokenEnhancer
          */
         @Bean
         @ConditionalOnMissingBean(name = "jwtTokenEnhancer")
@@ -70,8 +89,6 @@ public class TokenStoreConfig {
 
         /**
          * 自定义token扩展链
-         *
-         * @return tokenEnhancerChain
          */
         @Bean
         public TokenEnhancerChain tokenEnhancerChain() {
