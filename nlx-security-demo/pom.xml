@@ -13,15 +13,40 @@
     <artifactId>nlx-security-demo</artifactId>
     <description>样例程序</description>
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>com.security.oauth2</groupId>
             <artifactId>nlx-security-oauth2</artifactId>
             <version>${project.version}</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>net.sourceforge.tess4j</groupId>
+            <artifactId>tess4j</artifactId>
+            <version>4.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+
+     <!--   <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>tesseract</artifactId>
+            <version>4.1.1-1.5.3</version>
+        </dependency>-->
+
+
     </dependencies>
 
     <build>
